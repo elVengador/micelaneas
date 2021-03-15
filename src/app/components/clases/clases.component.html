@@ -1,0 +1,38 @@
+<div [ngClass]="nameClass" class="alert" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+<button (click)="nameClass='alert-primary'" class="btn btn-outline-primary">
+    primary
+</button>
+
+<button (click)="nameClass='alert-danger'" class="btn btn-outline-danger">
+    danger
+</button>
+
+<button (click)="nameClass='alert-warning'" class="btn btn-outline-warning">
+    warning
+</button>
+
+<br>
+
+<h2 [ngClass]="{'text-danger':true}">aplicar css condicional</h2>
+<h2 [ngClass]="{'text-danger':propiedades.danger,'text-info':!propiedades.danger}">aplicar css condicional</h2>
+<button 
+    (click)="propiedades.danger=!propiedades['danger']" 
+    class="btn"
+    [ngClass]="{'text-danger':propiedades.danger,'text-info':!propiedades.danger}"
+    >
+    {{propiedades.danger}}
+</button>
+
+<br>
+<h2>Proceso asincrono</h2>
+
+<button (click)="ejecutar()" class="btn btn-primary" type="button" [disabled]="isLoading">
+    <i [ngClass]="{'fa-floppy-o':!isLoading,'fa-refresh fa-spin':isLoading}" class='fa' aria-hidden="true"></i>
+    <span *ngIf="isLoading">Espere porfavor</span>
+    <span *ngIf="!isLoading">Guardar Cambios</span>
+</button>
+
+<p>{{isLoading}}</p>
